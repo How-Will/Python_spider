@@ -28,20 +28,6 @@ class BookInfoSpiderSpider(scrapy.Spider):
         # 提取数据
         book = BookInfoItem()
 
-        # sel = response.xpath('//div[@class="product_main"]')
-        # # book['name'] = sel.xpath('./h1/text()').extract_first()
-        # name = sel.xpath('./h1/text()').extract_first()
-        # print(name)
-        # # book['price'] = sel.xpath('./p[@class="price_color"]/text()').extract_first()
-        # price = sel.xpath('./p[@class="price_color"]/text()').extract_first()
-        # print(price)
-        # book['review_rating'] = sel.css('p.star-rating::attr(class)').re_first('star-rating ([A-Za-z]+)')
-
-        #sel = response.xpath('//table[@class="table-striped"]')
-        #book['upc'] = sel.xpath('.//tr[1]/td/text()').extract_first()
-        #book['stock'] = sel.xpath('(.//tr)[last()-1]/td/text()').re_first('\((\d+) available\)')
-        #book['review_num'] = sel.xpath('(.//tr)[last()]/td/text()').extract_first()
-
         sel = response.css('div.product_main')
         book['name'] = sel.xpath('./h1/text()').extract_first()
         book['price'] = sel.css('p.price_color::text').extract_first()
